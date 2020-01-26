@@ -33,8 +33,10 @@ export class AuthComponent {
       this.auth.signup(email,password).subscribe(resData => {
         console.log(resData);
         this.isLoading = false;
-      },error => {
-        this.error = 'An Error occured !';
+      },
+      errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
         this.isLoading = false;
       });
     }
