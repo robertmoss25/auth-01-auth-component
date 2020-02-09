@@ -25,17 +25,10 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    // Only get this once, which is what take(1) is doing
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap(user => {
-        return this.http.get<Recipe[]>(
-          'https://ng-course-recipe-book-83263.firebaseio.com/recipes.json',
-          {
-            params: new HttpParams().set('auth', user.token)
-          }
-        );
-      }),
+    return this.http.get<Recipe[]>(
+          'https://ng-course-recipe-book-83263.firebaseio.com/recipes.json'
+    )
+    .pipe(
       map(recipes => {
         return recipes.map(recipe => {
           return {
