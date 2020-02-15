@@ -26,7 +26,4 @@ const routes: Routes = [
 })
 export class RecipesRoutingModule 
 {
-    constructor(parameters) {
-        
-    }
 }
